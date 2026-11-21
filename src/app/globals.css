@@ -1,26 +1,100 @@
 @import "tailwindcss";
 
+/*
+ * Design tokens do portfólio.
+ * Toda página e componente deve usar estas variáveis para manter a identidade visual.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+
+  /* Cores */
+  --bg: #050d14;
+  --surface: rgba(3, 20, 31, 0.97);
+  --surface-hover: rgba(8, 43, 60, 0.96);
+  --cyan: #16c8f2;
+  --cyan-bright: #54ddff;
+  --text: #e5edf3;
+  --muted: #91a5b5;
+  --line: rgba(22, 200, 242, 0.55);
+  --line-strong: rgba(22, 200, 242, 0.9);
+
+  /* Movimento */
+  --ease: cubic-bezier(0.22, 0.8, 0.22, 1);
+
+  /* Espaçamento lateral padrão das páginas */
+  --gutter: clamp(22px, 4vw, 64px);
 }
 
+/* Expõe os tokens como utilitários do Tailwind (ex.: text-cyan, bg-surface, font-display). */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-cyan: var(--cyan);
+  --color-cyan-bright: var(--cyan-bright);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background-color: var(--bg);
+  /* Grade de "papel de engenharia" com brilho central. */
+  background-image:
+    linear-gradient(rgba(22, 200, 242, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 200, 242, 0.035) 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 48%, rgba(0, 105, 145, 0.09), transparent 52%);
+  background-size: 56px 56px, 56px 56px, auto;
+  background-attachment: fixed;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+/* Estrutura padrão de todas as páginas: conteúdo ocupando a altura e rodapé no fim. */
+.page {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+  flex-direction: column;
+  padding: 28px var(--gutter) 24px;
+}
+
+.page-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding: 22px 20px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

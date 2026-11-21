@@ -1,0 +1,101 @@
+.footer {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.signature,
+.socials {
+  display: flex;
+  align-items: center;
+}
+
+.signature {
+  gap: 22px;
+}
+
+.mark {
+  color: var(--cyan);
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.name {
+  padding-left: 22px;
+  border-left: 1px solid var(--line);
+  color: var(--text);
+}
+
+.role {
+  padding-left: 22px;
+  border-left: 1px solid var(--line);
+  letter-spacing: 0.045em;
+}
+
+.separator {
+  color: var(--muted);
+}
+
+.socials {
+  gap: 22px;
+}
+
+.socials a {
+  display: inline-grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  color: #9cb2c2;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.socials a:hover,
+.socials a:focus-visible {
+  color: var(--cyan);
+  transform: translateY(-2px);
+}
+
+.socials svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+@media (max-width: 760px) {
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 16px;
+  }
+
+  .signature {
+    flex-wrap: wrap;
+    gap: 10px 16px;
+  }
+
+  .name {
+    padding-left: 14px;
+  }
+
+  .role {
+    flex-basis: 100%;
+    border-left: 0;
+    padding-left: 0;
+    font-size: 10px;
+  }
+
+  .socials {
+    gap: 18px;
+  }
+}
